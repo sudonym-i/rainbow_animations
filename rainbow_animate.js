@@ -115,7 +115,8 @@ class Rainbow {
     SWAP_ANIMATION_FRAMES = this.ANIMATION_SPEED * 3;  // Number of frames to animate a swap
     START_TEXT_Y_POS      = 15;               // space from top of the canvas
     END_TEXT_Y_POS        = 15;               // space from end of lines to the numbers printed below
-    LINECAP_STYLE         ='round';
+    LINECAP_STYLE         = "round";
+    LINEJOIN              = "bevel"
     LINE_WIDTH            = 5;
     COLOR_SATURATION      = 45;
     COLOR_LIGHTNESS       = 60;
@@ -229,7 +230,8 @@ class Rainbow {
             let xPosition = (i + 1) * this.NODE_SPACING;            // this is the translation formula from index to x coordinate 
                                                                     // (+1 so that we draw inside the canvas)
             let node = new Node(xPosition, this.INITIAL_Y_POSITION, value, this.ctx, 
-                this.LINECAP_STYLE, this.LINE_WIDTH, this.COLOR_SATURATION, this.COLOR_LIGHTNESS, this.SPECTRUM);
+                this.LINECAP_STYLE, this.LINE_WIDTH, this.COLOR_SATURATION, this.COLOR_LIGHTNESS, 
+                this.SPECTRUM, this.LINEJOIN);
 
             nodes.push(node);
         }
@@ -420,7 +422,7 @@ class Node {
 
     
     constructor(xPosition, yPosition, value, canvasContext, 
-        cap_style, line_width, saturation, lightness, spectrum) {
+        cap_style, line_width, saturation, lightness, spectrum, linejoin) {
         this.x = xPosition;
         this.y = yPosition;
         this.value = parseInt(value);
@@ -430,7 +432,8 @@ class Node {
         this.COLOR_SATURATION = saturation;
         this.COLOR_LIGHTNESS = lightness;
         this.SPECTRUM = spectrum;
-        
+        this.LINEJOIN = linejoin;
+            
         // Animation state for swaps
         this.animationData = null;
     }
@@ -522,6 +525,7 @@ class Node {
         let currentY = startY + yIncrement * progress;
         
         this.ctx.lineWidth = this.LINE_WIDTH;
+        this.ctx.lineJoin = this.LINEJOIN;
         this.ctx.strokeStyle = this.getColor(oldValue);
         this.ctx.lineCap = this.LINECAP_STYLE;
         this.ctx.lineJoin = 'round';
