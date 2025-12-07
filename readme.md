@@ -1,6 +1,8 @@
 # Rainbow Animations
 
-This repository contains a rainbow animation illustration/animation library, and contains examples usage with the Shell Sort sorting algorithm.
+This repository contains a rainbow animation illustration/animation library.
+
+Example usage is provided in 'shell_sort.js', where I use the library to animate a shell sorting algorithm.
 
 Demo at: https://sudonym-i.github.io/rainbow_animations/
 
