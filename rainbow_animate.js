@@ -1,6 +1,8 @@
 /**
  * @name Rainbow
  * 
+ * @file_name rainbow_animate.js
+ * 
  * @author Isaac Klein
  * @course COMP 2631 - Information Structures
  * @instructor  Mia MacTavish
@@ -8,7 +10,7 @@
  * 
  * Usage:
  * 
- * Do the fdollowing to get the rainbow library working:
+ * Proper usage requirews the following:
  * 
  * 
  * 
@@ -24,16 +26,52 @@
  *          passing the array to be animated (<ARRAY_OF_NUMBERS>)   |
  *          And your algorithm set function (<STEP_FUNCTION>)       |
  *                                                                  |
- * let animation = new Rainbow(<ARRAY_OF_NUMBERS>, <STEP_FUNCTION>);|
- *                                                                  |
- * ------------------------------------------------------------------
+ * let animation = new Rainbow(<ARRAY_OF_NUMBERS>, <STEP_FUNCTION>);|  <--\
+ *                                                                  |     |
+ * ------------------------------------------------------------------     |
+ *                                                                        |
+ *                                                                        |
+ *                                                                        |
+ * -- Trigger the animation -----------------------------------------     |
+ * animation.startAnimation();                                      |     |
+ *                                                                  |     |
+ * ------------------------------------------------------------------     |
+ *                                                                        |
+ * ALGORITHM <STEP_FUNCTION> REQUIREMENTS     <---------------------------/
+ * 
+ * When you write the step function for this library, it must follow
+ * these requirements:
+ *      1 - It must take <CURRENT_ARRAY> as an argument.
+ *          This will be the state of the array prior to the step 
+ *          your function will perform. This array will be passed to 
+ *          your function, and will be either
+ *              - the starting array
+ *              or
+ *              - the output from the last call of your step algorithm
+ * 
+ *      2 - It must take a <STATE> onject.
+ *          This object can be anything you like (or nothing). This onject
+ *          will contain any information you need to keep continuity of for
+ *          your algorithm. It will contain:
+ *              - 'undefined' if it is the first time your algorithm has stepped
+ *              or
+ *              - The attributes passed by the last run of your step algorithm
+ * 
+ *          An example of what this would be used for is in the shellSortStep() function,
+ *          which needs to keep track of 'state.gapSize' between calls.
  * 
  * 
+ *      3 - It must return an object with  { newArray, isComplete, state }, where:
  * 
- * -- Trigger the animation -----------------------------------------
- * animation.startAnimation();                                      |
- *                                                                  |
- * ------------------------------------------------------------------
+ *              'newArray' is the array that resulted from 1 step of your algorithm 
+ *              (you can think of it as the 'result' of performing 1 step)
+ * 
+ *              'isComplete' is a boolean, TRUE if your function has determined that the 
+ *              algorithm is over, FALSE if the algorithm ought ot keep going.
+ * 
+ *              'state' is the object we mentioned before, with all the information
+ *              that the next call of your step function will require.
+ * 
  * 
  * 
  * EXAMPLE USAGE:
@@ -46,12 +84,13 @@
  * 
  * 
  * 
+ * 
+ * 
  * Restrictions:
  *  - The input array MUST have only unique values
  * 
  *  - This class is initialized with an array of values you wish to graph.
- *    the algorithm graphed may NOT:
- *         - change the length of the array
+ *    the algorithm graphed may NOT change the length of the array
  * 
  * 
  * 

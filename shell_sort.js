@@ -1,8 +1,21 @@
+/**
+ * @name shell_sort
+ * 
+ * @file_name shell_sort.js
+ * 
+ * @author Isaac Klein
+ * @course COMP 2631 - Information Structures
+ * @instructor  Mia MacTavish
+ * @modified dec 7, 2025
+ * 
+ * 
+ * This script implements the classic Shell Sort algorithm,
+ * and animates it using my Rainbow Animate library.
+ * 
+ */
 
-// Uses my Rainbow_animate library to animate the 'Shell Sort'
-// algorithm.
 
-// Configuration
+// Change this to edit how long of an array you wish to animate
 let ARRAY_SIZE = 40;
 
 // Initialize and start animation
