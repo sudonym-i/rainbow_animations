@@ -4,16 +4,43 @@
  * @author Isaac Klein
  * @course COMP 2631 - Information Structures
  * @instructor  Mia MacTavish
- * @modified dec 6, 2025
+ * @modified dec 7, 2025
  * 
  * Usage:
- *  The following constants/ parameters can be tweaked:
  * 
- *      FEILD NAME          |           DEFAULT VALUE
- * ----------------------------------------------------------
+ * Do the fdollowing to get the rainbow library working:
  * 
  * 
  * 
+ * -- OPTIONAL, use Rainnbow to generate a random array of numbers --
+ *                                                                  |
+ * let values = Rainbow.generateRandomValues(<ARRAY_SIZE>);         |
+ *                                                                  |
+ * ------------------------------------------------------------------
+ * 
+ * 
+ * 
+ * -- Create a Rainbow object ---------------------------------------
+ *          passing the array to be animated (<ARRAY_OF_NUMBERS>)   |
+ *          And your algorithm set function (<STEP_FUNCTION>)       |
+ *                                                                  |
+ * let animation = new Rainbow(<ARRAY_OF_NUMBERS>, <STEP_FUNCTION>);|
+ *                                                                  |
+ * ------------------------------------------------------------------
+ * 
+ * 
+ * 
+ * -- Trigger the animation -----------------------------------------
+ * animation.startAnimation();                                      |
+ *                                                                  |
+ * ------------------------------------------------------------------
+ * 
+ * 
+ * EXAMPLE USAGE:
+ * 
+ * let values = Rainbow.generateRandomValues(ARRAY_SIZE);
+ * let animation = new Rainbow(values, shellSortStep);
+ * animation.startAnimation();
  * 
  * 
  * 
