@@ -111,9 +111,9 @@ class Rainbow {
     INITIAL_Y_POSITION    = 20;               // Start a bit down from the top of the canvas for visibility
     ANIMATION_SPEED       = 20;               // frames between sort steps (also affects straight line height)
     LINE_INCREMENT        = 1;                // Probably shouldn't touch this... changes how far down we 
-    STRAIGHT_LENGTH       = 2;                // the length of the straight sections between swaps = 1 / STRAIGHT_LENGTH 
+    STRAIGHT_LENGTH       = 4;                // the length of the straight sections between swaps = 1 / STRAIGHT_LENGTH 
                                               //  go per step (how long the line draws are)
-    SWAP_INCREMENT        = 33;               // how tall the swap animations are- poorly named, change later
+    SWAP_INCREMENT        = 15;               // how tall the swap animations are- poorly named, change later
     SWAP_ANIMATION_FRAMES = this.ANIMATION_SPEED * 3;  // Number of frames to animate a swap
     START_TEXT_Y_POS      = 15;               // space from top of the canvas
     END_TEXT_Y_POS        = 15;               // space from end of lines to the numbers printed below
