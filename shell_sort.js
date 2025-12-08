@@ -28,7 +28,7 @@ animation.startAnimation();
 
 /**
  * Shell Sort step function. 
- * Performs 1 step of the shell sort algorithm and returns
+ * Performs 1 step (swap) of the shell sort algorithm and returns
  * the resulting array (with a bit of extra information).
  * 
  * Shell Sort Steps:
@@ -62,33 +62,40 @@ function shellSortStep(currentArray, state) {
 
     // Initialize state on first call
     if (state.gapSize == undefined) {
-        // Start with gap = half the array length (standard shell sort)
+        // Set initial values
         state.gapSize = Math.floor(currentArray.length / GAP_REDUCTION_PER_PASS);
         state.currentIndex = state.gapSize; // Start comparing from the first gap position
         state.passComplete = false; // Track if we've completed a full pass at current gap
         state.passHadChanges = false; // Track if current pass made any changes
     }
     
-    // Create a copy of the current array to work with
+    // Create a copy of the current array. This gets returned as the "result" of our step
     let newArray = [];
     for (let i = 0; i < currentArray.length; i = i + 1) {
         newArray.push(currentArray[i]);
     }
     
-    // Perform one comparison/swap operation at the current gap size
-    // This implements insertion sort for gap-separated elements
+    // Perform one comparison at the current gap size
+    // check bounds
     if (state.currentIndex < currentArray.length) {
-        // Compare element at currentIndex with elements 'gap' positions before it
+
+        // This is the new element that we are "inserting"
         let temp = newArray[state.currentIndex];
+
+        // Initialize pointer
         let j = state.currentIndex;
         
         // Shift elements that are greater than temp, moving backwards by gap
-        while (j >= state.gapSize && newArray[j - state.gapSize] > temp) {
-            newArray[j] = newArray[j - state.gapSize]; // Shift element forward
-            j -=  state.gapSize; // Move backwards by gap positions
+        while (( j - state.gapSize >= 0) && (newArray[j - state.gapSize] > temp) ) {
+            
+            // swap elements (leaves hole for temp, which may get filled by future swaps)
+            newArray[j] = newArray[j - state.gapSize]; 
+
+            //point at "empty" element now
+            j -=  state.gapSize; 
         }
         
-        // Insert temp at its correct position within the gap-separated subsequence
+        // Insert temp at its correct position within the gap-separated subsequence (fill the "hole")
         newArray[j] = temp;
         
         // Track if this step made any changes
@@ -96,8 +103,8 @@ function shellSortStep(currentArray, state) {
             state.passHadChanges = true;
         }
         
-        // Move to next element for comparison
-        state.currentIndex = state.currentIndex + 1;
+        // Move to next element for the next iteration of this function
+        state.currentIndex++;
         
         // Check if we've completed a full pass at this gap size
         if (state.currentIndex >= currentArray.length) {
@@ -108,7 +115,7 @@ function shellSortStep(currentArray, state) {
     // Check if sorting is complete (only check when a pass completes)
     let isComplete = false;
     if (state.passComplete && state.gapSize == 1 && !state.passHadChanges) {
-        // We're done: completed a full pass at gap=1 with no changes
+        // success!
         isComplete = true;
     }
     
