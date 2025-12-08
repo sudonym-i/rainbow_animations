@@ -8,6 +8,8 @@
  * @instructor  Mia MacTavish
  * @modified dec 7, 2025
  * 
+ * @credit article at https://bost.ocks.org/mike/algorithms/ for the inspiration of this project
+ * 
  * Usage:
  * 
  * Proper usage requirews the following:
