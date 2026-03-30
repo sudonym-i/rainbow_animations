@@ -12,7 +12,7 @@ Demo at: https://sudonym-i.github.io/rainbow_animations/
 
 ## Usage
 
-Usage is documented in [rainbow_animate.js](rainbow_animate.js). The inline documentation alognside the required variables expresses the usage of this library better than I cuold do here.
+Usage is documented in [rainbow_animate.js](rainbow_animate.js). The inline documentation alongside the required variables expresses the usage of this library better than I cuold do here.
 
 <img src="./image.png" alt="Rainbow animation preview" width="640" />
 
